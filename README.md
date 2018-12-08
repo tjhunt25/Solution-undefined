@@ -29,4 +29,3 @@ To do this we need to find a way to write and test code in the browser, save it 
 - challenge posting
 - solution posting
 - codemirror code editor for solutions
--

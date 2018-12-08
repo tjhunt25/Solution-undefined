@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require codemirror
+ *= require codemirror/themes/liquibyte
+ */
+
+body{
+ background-color:white;
+ margin: 0 10px;
+ border: 0;
+ padding: 0;
+ height: 100vh;
+ width: 100vw;
+ font-family: monospace;
+}
+
+main{
+  height: 95%;
+  width: 95%;
+  padding-top: 5vh;
+}
+
+nav {
+  top: 0;
+  left: 0;
+  padding: 5;
+  width: 100vw;
+  position: absolute;
+  display: block;
+  background-color: red;
+}
+
+.CreateAcc{
+  text-align: center;
+}
+
+.welcome {
+  display: inline-block;
+  text-align: left;
+  color: white;
+}
+
+.navLink {
+  display: inline;
+  position: relative;
+  padding-right: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.navContainer{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.welcome{
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.navLinkOut{
+  grid-column-start: 4;
+}
+
+
+.navbar navbar-expand-lg navbar-light bg-dark{
+  width: 100%;
+}
+
+.challenges{
+  color: white;
+}
+
+
+.alink {
+  font-size: 20px;
+
+}

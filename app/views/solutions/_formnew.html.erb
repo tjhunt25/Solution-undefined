@@ -1,0 +1,29 @@
+<div class='form-container'>
+  <div class='top'>
+    <textarea name="definition" id="definitionArea" cols="30" rows="10">const funk = function(input){</textarea>
+  </div>
+  <div class='mid'>
+    <%= form_for @solution, :html => {class: 'code-form'} do |f| %>
+      <%= f.hidden_field :score, {value: 0, id: "scorefield" }%>
+      <%= f.hidden_field :challenge_id, {value: @solution.challenge_id, id: "challenge-id"}%>
+      <%= f.hidden_field :user_id, {value: @current_user.id, id: "user-id"}%>
+      <%= f.text_area :code, {class: 'codearea', id: 'editor'}%>
+      <div class="button-grid">
+        <a href="/solutions/<%= @solution.id %>" method="delete" id="delete-button" class="btn btn-warning">Delete This Solution</a>
+        <%= f.submit 'Save Solution', class: 'submit-button btn btn-primary' %>
+        <a href="/solutions/<%= @solution.id %>" id="back-button" class="btn btn-warning">Stop Edit</a>
+        <button type="button" name="button" class="runButton btn btn-info" onClick='RunSolution()'>Run Code</button>
+      </div>
+    <% end %>
+  </div>
+  <div class='bottom'>
+    <textarea name="return" id="returnArea" cols="30" rows="10">    return output;
+}</textarea>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    convertForm();
+  });
+</script>

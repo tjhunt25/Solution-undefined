@@ -1,0 +1,26 @@
+<div class="grid-Container">
+  <div class="challenge-info">
+    <h2><%= @challenge.name %></h2>
+    <p><%= @challenge.description %></p>
+  </div>
+  <div class="code-textarea">
+    <%= render partial: 'formnew' %>
+  </div>
+  <div class="results">
+    <button type="button" name="button" onClick='RunSolution()'>Run Code</button>
+    <div></div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    data = (<%= @data %>);
+    $form = $('.code-form')
+    $form.submit( event => {
+      // event.preventDefault();
+      // console.log(event);
+      RunSolution();
+      event.target[2].value = score;
+    })
+  });
+</script>

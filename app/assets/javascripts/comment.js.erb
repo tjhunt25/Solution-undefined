@@ -1,0 +1,28 @@
+$(document).ready(function() {
+  const url = "https://solution-undefined.herokuapp.com/comments"
+  $(".commentsForm").on('submit', () => {
+    $.post(url, {
+      body: $("#body").val(),
+      solution_id: $('#solution_id').val()
+    })
+    .done(response => {
+      console.log('response', response);
+      // append new comment to existing list of comments
+      $(
+         `<div class="commentBox">
+            <strong><p>${response.user.name} says:</p></strong>
+            <p>${response.body}</p>
+            <span class="comment">created just now</span>
+            <span class="comment"><a href="/comments/${response.id}" data-method= 'delete'>remove</a></span>
+          </div>`
+        ).appendTo(".allComments");
+      $("#body").val("");
+    })
+    .fail(console.warn);
+    return false;
+  });
+  $(".commentBox a").on("click", () => {
+    console.log("hello");
+  });
+
+})

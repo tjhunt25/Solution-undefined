@@ -1,0 +1,128 @@
+<div class="challContainer">
+  <div class="challGridItem1">
+
+    <div class="card border-primary   mb-3" style="max-width: 20rem;">
+          <div class="card-header">
+            <h3><strong>Challange name:</strong></h3><%= @challenge.name%><br><%= link_to "BACK TO CHALLENGES", challenges_path, class: "btn btn-primary" %>
+
+          </div>
+
+          <div class="card-body">
+            <h4 class="card-title">
+            </h4>
+            <p class="card-text">
+
+                <% if @solutions == nil %>
+                  <%= link_to "Start A Solution For This Challenge", new_solution_path(params: {id: @challenge.id}) %> <br>
+                <% else %>
+                  <% if (!@solved.include?(@current_user.id)) %>
+                    <%= link_to "Start A Solution For This Challenge", new_solution_path(params: {id: @challenge.id}) %> <br>
+                  <% else %>
+                    <p><%= link_to "View Your Solution", solution_path(@solution[0].id) %></p>
+                  <% end %>
+                <% end %>
+                OR <br>
+                <%= link_to "Go To Next Challenge", challenge_path((@next)) %>
+                <br>
+                <br>
+                <p><strong>Description:</strong> <%= @challenge.description %></p>
+                <p><strong>Difficulty:</strong>
+                  <% if !@difficulty %>
+                  Challenge Not Yet Attempted
+                  <% else %>
+                    <%= @difficulty %>
+                  <% end %>
+                </p>
+                <p><strong>Completion Rate:</strong>
+                  <% if !@solved_rate %>
+                    Challenge Not Yet Attempted
+                  <% else %>
+                    <%= @solved_rate %>%
+                  <% end %>
+                </p>
+                <p><strong>Created By:</strong> <%= @challenge.user.name %>
+
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <% if @current_user.present? %>
+                  <% if @current_user.challenges.include?(@challenge) %>
+                    <%= link_to 'Edit Challenge', edit_challenge_path(@challenge.id) %><br>
+                    <%= link_to 'Delete Challenge', challenge_path(@challenge.id), method: 'delete' %><br>
+                  <% end %>
+                <% end %>
+
+                <br></p>
+          </div>
+        </div>
+  </div>
+
+
+
+
+
+
+
+  <div class="challGridItem2">
+
+  <div class="card border-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">
+     <h2><strong>Test Pairs</strong></h2><% if @current_user.present? %>
+         <% if @current_user.challenges.include?(@challenge) %>
+           <%= link_to 'Add A Test Pair', new_test_pair_path(params: {id: @challenge.id}), class: "btn btn-primary" %><br>
+         <% end %>
+       <% end %>
+  </div>
+  <div class="card-body">
+    <p class="card-text test">
+      <ul>
+        <% @challenge.test_pairs.each do |test_pair|%>
+          <li>
+            <strong>Input:</strong> <%= test_pair.input %> <br>
+            <strong>Output:</strong> <%= test_pair.output %> <br>
+            <% if @current_user.present? %>
+              <% if @current_user.challenges.include?(@challenge) %>
+                <%= link_to 'Edit Test Pair', edit_test_pair_path(test_pair.id) %><br>
+                <%= link_to 'Delete Test Pair', test_pair_path(test_pair.id), method: 'delete' %>
+              <% end %>
+            <% end %>
+            <br>
+            <br>
+          </li>
+        <% end %>
+      </ul>
+    </p>
+  </div>
+    </div>
+  </div>
+
+  <div class="challGridItem3">
+
+    <div class="card border-primary mb-3" style="max-width: 20rem;">
+      <div class="card-header">                                                               <h2><strong>Solutions</strong></h2>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">
+          <button class="btn btn-primary showSolutionButton">Click Here To Show Solutions</button>
+        </h4>
+        <p class="card-text">
+          <div class="hiddenSolutions">
+          <% if @challenge.solutions.length > 0 %>
+            <ul>
+              <% @challenge.solutions.each do |solution| %>
+                <li>
+                  <strong>User</strong> <%= link_to solution.user.name, solution_path(solution.id) %><br>
+                  <strong>Solution</strong> <%= solution.code %><br><br>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>There are no Solutions to this challenge. Lead the way and <%= link_to "Start A Solution For This Challenge", new_solution_path(params: {id: @challenge.id}) %> </p>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

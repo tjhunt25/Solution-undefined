@@ -1,0 +1,111 @@
+// Place all the styles related to the solutions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.CodeMirror{
+  height: 100%!important;
+  width: 100%!important;
+}
+
+.form-container{
+  display: grid;
+  grid-template-rows: 20px 1fr 40px;
+  grid-template-columns: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.mid{
+  height: 100%;
+  width: 100%;
+}
+
+.grid-Container{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr 2fr;
+  grid-template-rows: 1fr 3fr 1fr;
+}
+
+.code-form{
+  height: 100%;
+}
+
+.run-button{
+  z-index: 200;
+}
+
+.button-grid{
+  display: flex;
+  flex: wrap;
+  position: absolute;
+  width: 100%;
+  flex-direction: row-reverse;
+  bottom: -36px;
+  z-index: 0;
+}
+
+.challenge-info{
+  grid-column: 1 / span 3;
+  grid-row: 1;
+}
+
+.code-textarea{
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.codearea{
+  height: 100%;
+  width: 100%;
+}
+
+.results{
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.editLink{
+  display: inline-block;
+  position: absolute;
+  bottom: -35;
+  right: 0;
+}
+
+#aside{
+  padding-left: 10px;
+}
+
+.comment{
+  margin: 10px 0;
+}
+
+.commentSection{
+  margin-left: 3vw;
+  grid-column: 3;
+  grid-row: 1 / span 3;
+}
+
+.commentBox{
+  padding: 4px;
+  border-bottom: 1px dotted black;
+  width: 100%;
+  height: 12vh;
+}
+
+.allComments{
+  border-top: 1px dotted black;
+}
+
+.textField{
+  width: 15vw;
+}
+
+#body{
+  width: 50%;
+  height: 5vh;
+}

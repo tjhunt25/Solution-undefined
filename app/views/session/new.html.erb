@@ -1,0 +1,44 @@
+
+<br>
+
+
+
+
+
+
+  <!-- if flash is truthy print out -->
+  <% if flash[:error] %>
+  <br>
+  <strong><%= flash[:error] %></strong>
+  <br><br>
+  <% end %>
+
+  <!-- start of bootstrap -->
+  <h1 class = "loginP">Login</h1>
+
+  <div class = "jumbotron jumbotron-login">
+  <div class="loginF">
+
+    <%= form_tag login_path do %>
+    <!-- start of bootstrap -->
+    <%= label_tag :email  %>
+  <br>
+    <%= email_field_tag :email,  nil, class: "form-control session"  %> <br> <br>
+
+    <%= label_tag :password %>
+    <br>
+    <%= password_field_tag :password, nil, class: "form-control session"  %>
+
+    <!-- end of bootstrap -->
+
+    <br><br>
+
+    <%= submit_tag 'Sign in', class: "btn btn-primary btn-lg"  %>
+    <% end %>
+  </div>
+  </div>
+
+<br>
+<br>
+<br>
+<br>

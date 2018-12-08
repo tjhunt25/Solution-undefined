@@ -1,0 +1,63 @@
+<div class="grid-Container">
+  <div class="challenge-info">
+    <h2><a href="/challenges/<%= @challenge.id %>"><%= @challenge.name %></a></h2>
+    <p><%= @challenge.description %> <br>
+      <strong>Example Input-->Output:</strong> <%= @challenge.test_pairs[0].input %> --> <%= @challenge.test_pairs[0].output %>
+    </p>
+    <p><%= link_to "Start Another Challenge", challenge_path("#{Challenge.all.ids.sample}"), class:"btn btn-success" %></p>
+  </div>
+  <div class="code-textarea">
+    <textarea name="code" class="codearea" id="editor">
+let funk = function(input){
+<%= @solution.code %>
+return output;
+}
+    </textarea>
+    <% if @solution.user_id == @current_user.id %>
+      <a href="/solutions/<%= @solution.id %>/edit" class="editLink btn btn-primary">Edit Solution</a>
+    <% end %>
+  </div>
+  <div class="results">
+    <div class="resultAppend">
+      This solution produced the correct output for <%= @solution.score %>% of the given inputs.
+    </div>
+  </div>
+  <div class="commentSection">
+    <h2>Comments</h2>
+    <div class="allComments">
+      <% @solution.comments.each do |comment| %>
+        <div class="commentBox">
+          <strong><p><%= comment.user.name %> says:</p></strong>
+          <p><%= simple_format(comment.body) %></p>
+          <span class="comment">created <%= time_ago_in_words(comment.created_at) %> ago</span>
+          <% if @current_user.present? %>
+            <% if comment.user_id == @current_user.id %>
+            <span class="comment"><%= link_to 'remove', comment_path(comment.id), method: 'delete' %> </span>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <%= form_tag(comments_path, {class: "commentsForm"}) do  %>
+      leave a <%= label_tag :Comment %>: <br>
+      <%= text_area_tag(:body) %> <br>
+      <%= hidden_field_tag :solution_id,"#{@solution.id}" %>
+      <br>
+      <%= submit_tag("Post Comment", {class: "submitComment"})%>
+    <% end  %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    data = (<%= @data %>);
+  });
+  myTextArea = $('.codearea')[0];
+  editor = CodeMirror.fromTextArea( myTextArea, {
+    value: myTextArea.value,
+    theme: 'liquibyte',
+    lineNumbers: true,
+    readOnly: true
+  });
+</script>

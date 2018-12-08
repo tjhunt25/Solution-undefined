@@ -1,0 +1,12 @@
+<%= link_to "BACK TO CHALLENGE", challenges_path %> <br><br>
+
+<ul>
+  <% @challenge.test_pairs.each do |test_pair|%>
+    <li>
+      <%= test_pair.input %> <br>
+      <%= test_pair.output %> <br>
+    </li>
+  <% end %>
+</ul>
+
+<br>

@@ -1,0 +1,94 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.CreateAcc{
+  text-align: center;
+}
+
+.welcomeB {
+  display: inline;
+  text-align: left;
+  color: black;
+}
+
+nav {
+  text-align: right;
+  width: 95%;
+  position: fixed;
+  color: black;
+}
+
+
+.completeChall {
+  display: inline;
+}
+
+.yourChall {
+  display: inline;
+  margin-right: 20%
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr;
+  // grid-auto-rows: 100px 30px;
+
+}
+
+.SolutionComp {
+  display: inline;
+}
+
+.hr {
+  margin-right: 20px;
+  width: 100%;
+}
+
+
+.vertical-l {
+  width: 1px;
+  height: 800px  ;
+  background-color: black;
+  margin-left: 30%
+}
+
+.right-Col {
+  // margin-top: 5%;
+  // width: 100%;
+  // margin-left: 80% ;
+  grid-column: 3/4;
+
+}
+
+.left-Col {
+  // margin-top: 5%;
+  // margin-left: 20%;
+  // width: 100%;
+  grid-column: 1/2;
+}
+ul {
+  list-style-type: none;
+}
+
+.yoursol{
+  text-align: center;
+}
+
+
+ .jumbotron-signup {
+   margin-right: 25%;
+ }
+
+
+
+.card bg-light mb-3 {
+  margin-left: 20%
+}
+
+a.alink {
+  color: white !important;
+}
+
+.chal {
+  text-align: center;
+}

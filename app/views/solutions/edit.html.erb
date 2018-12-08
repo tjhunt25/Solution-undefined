@@ -1,0 +1,42 @@
+<div class="grid-Container">
+  <div class="challenge-info">
+    <h2><a href="/challenges/<%= @challenge.id %>"><%= @challenge.name %></a></h2>
+    <p><%= @challenge.description %> <br>
+      <strong>Example Input-->Output:</strong> <%= @challenge.test_pairs[0].input %> --> <%= @challenge.test_pairs[0].output %>
+    </p>
+  </div>
+  <div class="code-textarea">
+    <%= render partial: 'formnew' %>
+  </div>
+  <div class="results">
+    <div></div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    data = (<%= @data %>);
+    const solutionUrl = "http://localhost:3000/solutions/<%= @solution.id %>"
+    $form = $('.code-form')
+    $form.submit( function(event){
+      event.preventDefault();
+      RunSolution();
+      $.ajax({
+        type: 'PUT',
+        url: solutionUrl,
+        data: {
+          challenge_id: $('#challenge-id').val(),
+          score: $('#scorefield').val(),
+          code: $('#editor').val()
+        }
+      })
+      .done( response => {
+        $('.results div').text("Saved Succesfully!");
+      })
+      .fail( console.warn )
+      .always(() => {
+        $('.submit-button').prop('disabled', false)
+      });
+    });
+  });
+</script>

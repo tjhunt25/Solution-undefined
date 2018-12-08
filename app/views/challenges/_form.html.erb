@@ -1,0 +1,27 @@
+<% if flash[:errors].present? %>
+  <strong>Please correct the following errors in the form:</strong>
+  <ol>
+    <% flash[:errors].each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
+
+<div class="form-group">
+
+  <%= form_for @challenge do |f| %>
+  <%= f.label :name, class: "name" %> <br>
+  <%= f.text_field :name, class: "yes form-control  " %>
+  <br>
+  <br>
+  <br>
+  <%= f.label :description, class:"des" %> <br>
+  <%= f.text_area :description, class: "form-control, formDesc" %>
+  <br>
+  <br>
+  <%= f.submit class: "btn-primary btn-lg" %>
+  <% end %>
+
+</div>

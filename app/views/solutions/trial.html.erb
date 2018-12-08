@@ -1,0 +1,54 @@
+<div class="grid-Container">
+  <div class="challenge-info">
+    <h2><a href="/challenges/<%= @challenge.id %>"><%= @challenge.name %></a></h2>
+    <p><%= @challenge.description %> <br>
+      <strong>Example Input-->Output:</strong> <%= @challenge.test_pairs[0].input %> --> <%= @challenge.test_pairs[0].output %>
+    </p>
+  </div>
+  <div class="form-container">
+    <div class='top'>
+      <textarea name="definition" id="definitionArea" cols="30" rows="10">const funk = function(input){</textarea>
+    </div>
+    <div class='mid'>
+      <textarea name="code" class="codearea" id="editor"></textarea>
+    </div>
+    <div class='bottom'>
+      <textarea name="return" id="returnArea" cols="30" rows="10">    return output;
+}</textarea>
+    </div>
+  </div>
+  <div id="aside">
+    <strong>This is the trial page. Feel free to write some code and play around, but you wont be able to save anything until you're logged into an account</strong> <br>
+    <p><%= link_to "Look at other challenges", challenges_path%></p>
+  </div>
+  <div class="results">
+    <button type="button" name="button" onClick='RunSolution()' class="runButton btn btn-info">Run Code</button>
+    <div></div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    data = (<%= @data %>);
+    let myTextArea = $('#definitionArea')[0];
+    editor = CodeMirror.fromTextArea( myTextArea, {
+      value: myTextArea.value,
+      theme: 'liquibyte',
+      lineNumbers: false,
+      readOnly: true,
+    });
+    myTextArea = $('#returnArea')[0];
+    editor = CodeMirror.fromTextArea( myTextArea, {
+      value: myTextArea.value,
+      theme: 'liquibyte',
+      lineNumbers: false,
+      readOnly: true,
+    });
+    myTextArea = $('.codearea')[0];
+    editor = CodeMirror.fromTextArea( myTextArea, {
+      value: myTextArea.value,
+      theme: 'liquibyte',
+      lineNumbers: true,
+    });
+  });
+</script>

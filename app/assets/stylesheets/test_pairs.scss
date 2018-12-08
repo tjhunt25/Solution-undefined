@@ -1,0 +1,10 @@
+// Place all the styles related to the test_pairs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hiddenSolutions {
+  display: none;
+}
+.hiddenSolutions.show{
+  display: block;
+}
